@@ -1,9 +1,10 @@
-import ContributionRound from "../Models/ContributionRound.js";
-import Group from "../Models/groupModel.js";
+import ContributionRound from "../Models/Contribution.js";
+import Group from "../Models/Group.js";
+import Notification from "../Models/Notification.js";
 
 export const createRound = async (groupId) => {
   const group = await Group.findById(groupId).populate("members");
-  if (!group) throw new Error("GROUP NOT FOUND");
+  if (!group) throw new Error("Group not found");
 
   const previousRounds = await ContributionRound.countDocuments({ group: groupId });
   const roundNumber = previousRounds + 1;
@@ -22,6 +23,13 @@ export const createRound = async (groupId) => {
     receiver,
     contributions
   });
+
+  const notifications = group.members.map(m => ({
+    user: m._id,
+    message: `New round #${roundNumber} has started. Please make your payment.`
+  }));
+
+  await Notification.insertMany(notifications);
 
   return round;
 };

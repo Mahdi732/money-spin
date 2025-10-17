@@ -2,10 +2,11 @@ import * as ContributionService from "../Services/ContributionService.js";
 
 export const createRound = async (req, res) => {
   try {
-    const round = await ContributionService.createRound(req.params.groupId);
-    res.status(201).json(round);
+    const groupId = req.params.groupId;
+    const round = await ContributionService.createRound(groupId);
+    res.status(201).json({ success: true, round });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ success: false, message: err.message });
   }
 };
 
