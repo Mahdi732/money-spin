@@ -60,15 +60,15 @@ Elle gère :
 
 ---
 
-📦 src/
-├── 📁 config/ # Configuration globale (DB, JWT, etc.)
-├── 📁 controllers/ # Logique applicative et gestion des routes
-├── 📁 models/ # Schémas Mongoose (User, Group, Payment, etc.)
-├── 📁 routes/ # Fichiers de routing Express
-├── 📁 services/ # Logique métier (KYC, fiabilité, notifications)
-├── 📁 middlewares/ # Middleware d’authentification et validation
-├── 📁 utils/ # Fonctions utilitaires (helpers)
-├── 📁 tests/ # Tests Jest unitaires et d’intégration
+src/
+├── config/ # Configuration globale (DB, JWT, etc.)
+├── controllers/ # Logique applicative et gestion des routes
+├── models/ # Schémas Mongoose (User, Group, Payment, etc.)
+├── routes/ # Fichiers de routing Express
+├── services/ # Logique métier (KYC, fiabilité, notifications)
+├── middlewares/ # Middleware d’authentification et validation
+├── utils/ # Fonctions utilitaires (helpers)
+├── tests/ # Tests Jest unitaires et d’intégration
 └── server.js # Point d’entrée de l’application
 
 
